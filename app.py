@@ -36,5 +36,15 @@ def desenvolvedor(id):
         desenvolvedores.pop(id)
         return jsonify({'status':'sucesso', 'mensagem':'Registro excluído'})
 
+#Insere novos desenvolvedores e consulta todos os desenvolvedores da API
+@app.route('/dev', methods=['POST', 'GET'])
+def listaDesenvolvedores():
+    if request.method == 'POST':
+        dados = json.loads(request.data)
+        desenvolvedores.append(dados)
+        return jsonify({'status':'sucesso', 'mensagem':'Registro inserido'})
+    elif request.method == 'GET':
+        return jsonify(desenvolvedores)
+
 if __name__ == '__main__':
     app.run(debug=True)
