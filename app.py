@@ -3,6 +3,7 @@ import json
 
 app = Flask(__name__)
 
+#Lista de desenvolvedores pré existentes na API
 desenvolvedores = [
     {
         'nome':'Kalebe',
@@ -14,6 +15,7 @@ desenvolvedores = [
     }
 ]
 
+#Consulta, altera e deleta desenvolvedores pelo ID
 @app.route('/dev/<int:id>', methods=['GET', 'PUT', 'DELETE'])
 def desenvolvedor(id):
     if request.method == 'GET':
